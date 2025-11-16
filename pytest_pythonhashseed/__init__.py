@@ -17,6 +17,7 @@
 import os
 import subprocess
 import sys
+import warnings
 
 import pytest
 
@@ -59,6 +60,13 @@ def pytest_configure(config):
         # see details in https://bugs.python.org/issue23427#msg371022
         module_name = module_spec.name.rsplit('.', 1)[0]
         argv = [sys.executable, '-m', module_name, *sys.argv[1:]]
+
+    if argv[0].split('/')[-2:] == ['vscode_pytest', 'run_pytest_script.py']:
+        warnings.warn(
+            'Detected vscode_pytest, skipping PYTHONHASHSEED',
+            stacklevel=2,
+        )
+        return
 
     os.environ['PYTHONHASHSEED'] = str(opt_hashseed)
 
