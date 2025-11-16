@@ -21,7 +21,7 @@ import warnings
 
 import pytest
 
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 __author__ = 'Michael Samoglyadov'
 __license__ = 'Apache License, Version 2.0'
 __website__ = 'https://github.com/mr-mixas/pytest-pythonhashseed'
